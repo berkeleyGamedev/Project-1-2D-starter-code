@@ -5,10 +5,7 @@ using UnityEngine;
 public class LineofSight : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D col) {
-        if(col.CompareTag("Player"))
-        {
-            GetComponentInParent<Enemy>().player = col.transform;
-            Debug.Log("see player lol");
-        }
+       /* TODO: When the player walks into the collider, the enemy should be aware of it's position. Otherwise, it should not. */
+
     }
 }

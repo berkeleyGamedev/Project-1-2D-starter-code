@@ -26,18 +26,47 @@ public class Enemy : MonoBehaviour
     #region Physics_components
     Rigidbody2D EnemyRB;
     #endregion
+    #region Unity_functions
+
+    private void Awake() {
+        EnemyRB = GetComponent<Rigidbody2D>();
+        currhealth = MaxHealth;
+    }
+
+    private void Update() {
+        /* TODO: Call Move() if player is !null */
+
+    }
+    #endregion
+
+    #region Movement_functions
+    private void Move()
+    { 
+        /* TODO: Move the enemy towards the player */
+
+
+    }
+    #endregion
+
+    #region Attack_functions
+    private void Explode()
+    {
+     /* TODO: Explode should deal damage to the player if within explosion radius. To simulate a explosion, the enemy game object should be destroyed and spawn a explosion animation in its place. 
+      IMPORTANT: Destroy() should be the LAST function executed. Once a game object is destroyed, it will not execute any code beyond that line. */
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+       /* TODO: Call Explode() if enemy comes in contact with player */
+
+    }
+    #endregion
+
 
     #region Health_functions
     public void TakeDamage(float value)
     {
-        FindObjectOfType<AudioManager>().Play("BatHurt");
-        currhealth -= value;
-        Debug.Log("Enemy health is now " + currhealth.ToString());
-
-        if(currhealth <= 0)
-        {
-            Die();
-        }
+       /* TODO: Reduce enemy's health points and call Die() once enemy's health has reached zero */
 
     }
 
@@ -47,57 +76,4 @@ public class Enemy : MonoBehaviour
     }
     #endregion
 
-    #region Unity_functions
-
-    private void Awake() {
-        EnemyRB = GetComponent<Rigidbody2D>();
-        currhealth = MaxHealth;
-    }
-
-    private void Update() {
-        if (player == null)
-        {
-            return;
-        }
-        Move();
-    }
-    #endregion
-
-    #region Movement_functions
-    private void Move()
-    { 
-        Vector2 direction = player.position - transform.position;
-
-        EnemyRB.velocity = direction.normalized * movespeed;
-
-    }
-    #endregion
-
-    #region Attack_functions
-    private void Explode()
-    {
-        FindObjectOfType<AudioManager>().Play("Explosion");
-        RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, explosionRadius, Vector2.zero);
-        foreach (RaycastHit2D hit in hits)
-        {
-            if (hit.transform.CompareTag("Player"))
-            {
-                Debug.Log("ouch explosion");
-
-                Instantiate(explosionObject, transform.position, transform.rotation);
-                hit.transform.GetComponent<PlayerController>().TakeDamage(explosionDamage);
-                Destroy(this.gameObject);
-            }
-        }
-        Destroy(this.gameObject);
-
-    }
-
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.transform.CompareTag("Player"))
-        {
-            Explode();
-        }
-    }
-    #endregion
 }
