@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     #region Movement_variables
-    public float movespeed;
-    private float newMovespeed;
     float x_input;
     float y_input;
     #endregion
@@ -22,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     #region Unity_functions
     private void Awake() {
+        /* TODO: Set HPSlider.value to a ratio between the 
+            player's current health and maximum health. */
         PlayerRB = GetComponent<Rigidbody2D>();
         attackTimer = 0;
         anim = GetComponent<Animator>();
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         }
         x_input = Input.GetAxisRaw("Horizontal");
         y_input = Input.GetAxisRaw("Vertical");
-        move();
+        Move();
 
         if(Input.GetKeyDown(KeyCode.J) && attackTimer <= 0)
         {
@@ -105,30 +105,29 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Movement_functions
-    private void move()
+    private void Move()
     {
-       
         anim.SetBool("Moving", true);
         if (x_input > 0)
         {
-            PlayerRB.velocity = Vector2.right * newMovespeed;
+            PlayerRB.velocity = Vector2.right;
             currDirection = Vector2.right;
             
         }
         else if (x_input < 0)
         {
-            PlayerRB.velocity = Vector2.left * newMovespeed;
+            PlayerRB.velocity = Vector2.left;
             currDirection = Vector2.left;
 
         }
         else if (y_input > 0)
         {
-            PlayerRB.velocity = Vector2.up * newMovespeed;
+            PlayerRB.velocity = Vector2.up;
             currDirection = Vector2.up;
         }
         else if (y_input < 0)
         {
-            PlayerRB.velocity = Vector2.down * newMovespeed;
+            PlayerRB.velocity = Vector2.down;
             currDirection = Vector2.down;
         }
         else
@@ -149,12 +148,16 @@ public class PlayerController : MonoBehaviour
     {
         /* TODO: Adjust currHealth when the player takes damage
         IMPORTANT: What happens when the player's health reaches 0? */
+
+        /* TODO: Update the value of HPSlider after the player's health changes. */
     }
 
     public void Heal(float value)
     {
         /* TODO: Adjust currHealth when the player heals
         IMPORTANT: What happens when the player's health surpasses their max health? Should currHealth be above maxHealth?*/
+
+        /* TODO: Update the value of HPSlider after the player's health changes. */
     }
 
     public void Die()
@@ -177,17 +180,4 @@ public class PlayerController : MonoBehaviour
         }
     }
     #endregion
-
-
-    // // Start is called before the first frame update
-    // void Start()
-    // {
-        
-    // }
-
-    // // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
 }
