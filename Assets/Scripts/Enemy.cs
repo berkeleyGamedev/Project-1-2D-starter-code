@@ -35,7 +35,6 @@ public class Enemy : MonoBehaviour
 
     private void Update() {
         /* TODO: Call Move() if player is !null */
-
     }
     #endregion
 
@@ -43,22 +42,22 @@ public class Enemy : MonoBehaviour
     private void Move()
     { 
         /* TODO: Move the enemy towards the player */
-
-
     }
     #endregion
 
     #region Attack_functions
     private void Explode()
     {
-     /* TODO: Explode should deal damage to the player if within explosion radius. To simulate a explosion, the enemy game object should be destroyed and spawn a explosion animation in its place. 
-      IMPORTANT: Destroy() should be the LAST function executed. Once a game object is destroyed, it will not execute any code beyond that line. */
+        /* TODO: Explode should deal damage to the player if within explosion radius. To simulate a explosion, 
+            the enemy game object should be destroyed and spawn a explosion animation in its place. 
+            IMPORTANT: Destroy() should be the LAST function executed. Once a game object is destroyed, it will not execute any code beyond that line. */
 
+        /* TODO: Call TakeDamage() inside of the player's PlayerController script using
+            the "hit" reference variable. */
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
        /* TODO: Call Explode() if enemy comes in contact with player */
-
     }
     #endregion
 
@@ -66,8 +65,8 @@ public class Enemy : MonoBehaviour
     #region Health_functions
     public void TakeDamage(float value)
     {
-       /* TODO: Reduce enemy's health points and call Die() once enemy's health has reached zero */
-
+       /* TODO: Adjust currHealth when the enemy takes damage
+        IMPORTANT: What happens when the enemy's health reaches 0? */
     }
 
     private void Die()

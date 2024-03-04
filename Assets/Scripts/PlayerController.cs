@@ -17,17 +17,7 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Health_variables
-    public float maxHealth;
-    float currHealth;
-    public Slider HPSlider;
-    #endregion
 
-    #region Stam_variables
-    public float maxStam;
-    public float maxSprintDelay;
-    float currStam;
-    public Slider StamSlider;
-    float sprintDelay;
     #endregion
 
     #region Unity_functions
@@ -35,11 +25,6 @@ public class PlayerController : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody2D>();
         attackTimer = 0;
         anim = GetComponent<Animator>();
-        currHealth = maxHealth;
-        currStam = maxStam;
-        HPSlider.value = currHealth / maxHealth;
-        StamSlider.value = currStam / maxStam;
-        sprintDelay = 0;
     }
     private void Update() {
         if (isAttacking)
@@ -101,6 +86,7 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(hitboxtiming);
         Debug.Log("Casting hitbox now");
+        //change this to a box cast in front of the player
         RaycastHit2D[] hits = Physics2D.BoxCastAll(PlayerRB.position + currDirection, Vector2.one, 0f, Vector2.zero);
         foreach (RaycastHit2D hit in hits)
         {
@@ -108,7 +94,8 @@ public class PlayerController : MonoBehaviour
             if(hit.transform.CompareTag("Enemy"))
             {
                 Debug.Log("Tons of Damage");
-                hit.transform.GetComponent<Enemy>().TakeDamage(Damage);
+                /* TODO: Call TakeDamage() inside of the enemy's Enemy script using
+                the "hit" reference variable */
             }
         }
         yield return new WaitForSeconds(hitboxtiming);
@@ -120,38 +107,7 @@ public class PlayerController : MonoBehaviour
     #region Movement_functions
     private void move()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && currStam > 0.1 && sprintDelay <= 0)  
-        {
-            newMovespeed = movespeed * 2;
-            currStam -= Time.deltaTime;
-            sprintDelay -= Time.deltaTime;
-            StamSlider.value = currStam / maxStam;
-        }
-        else
-        {
-            // Check if the current stamina is less than 0.5, if so, put it on cooldown
-            if (currStam < 0.1)
-            {
-                sprintDelay = maxSprintDelay;
-            }
-
-
-            // subtract cooldown
-            sprintDelay -= Time.deltaTime;
-
-
-            newMovespeed = movespeed;
-            currStam += Time.deltaTime;
-
-            // Check if the current stamina is more than the max stamina, if so, set it to max stamina
-            if (currStam > maxStam)
-            {
-                currStam = maxStam;
-            }
-            StamSlider.value = currStam / maxStam;
-        }
-
-        
+       
         anim.SetBool("Moving", true);
         if (x_input > 0)
         {
@@ -191,31 +147,19 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float value)
     {
-        FindObjectOfType<AudioManager>().Play("PlayerHurt");
-        currHealth -= value;
-        Debug.Log("health is now " + currHealth.ToString());
-        HPSlider.value = currHealth / maxHealth;
-        if (currHealth <= 0)
-        {
-            Die();
-        }
+        /* TODO: Adjust currHealth when the player takes damage
+        IMPORTANT: What happens when the player's health reaches 0? */
     }
 
     public void Heal(float value)
     {
-        currHealth += value;
-        currHealth = Mathf.Min(currHealth, maxHealth);
-        HPSlider.value = currHealth / maxHealth;
-        Debug.Log("health is now " + currHealth.ToString());
+        /* TODO: Adjust currHealth when the player heals
+        IMPORTANT: What happens when the player's health surpasses their max health? Should currHealth be above maxHealth?*/
     }
 
     public void Die()
     {
-        FindObjectOfType<AudioManager>().Play("PlayerDeath");
         Destroy(this.gameObject);
-
-        GameObject gm = GameObject.FindWithTag("GameController");
-        gm.GetComponent<GameManager>().LoseGame();
     }
     #endregion
 
