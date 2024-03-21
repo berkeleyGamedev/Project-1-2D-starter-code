@@ -14,9 +14,7 @@ public class Chest : MonoBehaviour
     #region Chest_functions
     IEnumerator DestroyChest()
     {
-        yield return new WaitForSeconds(.3f);
-        Instantiate(healthpack, transform.position, transform.rotation);
-        Destroy(this.gameObject);
+        /* TODO Part 6.2: Instantiate the health potion at the chest's location and destroy the chest. */
     }
 
     public void Interact()
