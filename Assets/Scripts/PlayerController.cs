@@ -18,43 +18,26 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    #region Animation_components
+    Animator anim;
+    #endregion
+
     #region Unity_functions
     private void Awake() {
+        /* TODO: Update your Awake function to initialize all variables needed. This includes your attackTimer, and your HPSlider.value.*/
         /* TODO: Set HPSlider.value to a ratio between the 
             player's current health and maximum health. */
         PlayerRB = GetComponent<Rigidbody2D>();
-        attackTimer = 0;
         anim = GetComponent<Animator>();
     }
     private void Update() {
-        if (isAttacking)
-        {
-            return;
-        }
-        x_input = Input.GetAxisRaw("Horizontal");
-        y_input = Input.GetAxisRaw("Vertical");
-        Move();
-
-        if(Input.GetKeyDown(KeyCode.J) && attackTimer <= 0)
-        {
-            Attack();
-        }
-        else
-        {
-            attackTimer -= Time.deltaTime;
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Interact();
-        }
+        /*TODO: Write an Update function that will call the Move() helper function while also updating the x_input and y_input values.
+        You will also need to edit this function when you call attacks, and interacting with chests.*/
         
     }
     #endregion
 
-    #region Animation_components
-    Animator anim;
-    #endregion
+
 
     #region Attack_variables
     public float Damage;
@@ -69,28 +52,22 @@ public class PlayerController : MonoBehaviour
     #region Attack_functions
     private void Attack()
     {
-
+        // TODO: Create a function that will start the attack coroutine and set the timer to attackspeed.
         Debug.Log("Attacking now");
-        Debug.Log(currDirection);
-        attackTimer = attackspeed;
-        StartCoroutine(AttackRoutine());
     }
 
     IEnumerator AttackRoutine()
     {
+        /* TODO: You will need to edit this function in the animation section, the enemy section, and in the sound section.*/
         isAttacking = true;
         PlayerRB.velocity = Vector2.zero;
         anim.SetTrigger("Attack");
-
-        FindObjectOfType<AudioManager>().Play("PlayerAttack");
-
         yield return new WaitForSeconds(hitboxtiming);
         Debug.Log("Casting hitbox now");
-        //change this to a box cast in front of the player
+
         RaycastHit2D[] hits = Physics2D.BoxCastAll(PlayerRB.position + currDirection, Vector2.one, 0f, Vector2.zero);
         foreach (RaycastHit2D hit in hits)
         {
-            Debug.Log(hit.transform.name);
             if(hit.transform.CompareTag("Enemy"))
             {
                 Debug.Log("Tons of Damage");
@@ -107,37 +84,20 @@ public class PlayerController : MonoBehaviour
     #region Movement_functions
     private void Move()
     {
-        anim.SetBool("Moving", true);
-        if (x_input > 0)
+        /*TODO: Edit the Move() function which will set PlayerRB.velocity to a vector based on which input the player is pressing.*/
+        if (x_input == 0 && y_input == 0)
         {
-            PlayerRB.velocity = Vector2.right;
-            currDirection = Vector2.right;
-            
-        }
-        else if (x_input < 0)
-        {
-            PlayerRB.velocity = Vector2.left;
-            currDirection = Vector2.left;
-
-        }
-        else if (y_input > 0)
-        {
-            PlayerRB.velocity = Vector2.up;
-            currDirection = Vector2.up;
-        }
-        else if (y_input < 0)
-        {
-            PlayerRB.velocity = Vector2.down;
-            currDirection = Vector2.down;
+            anim.SetBool("Moving", false);
         }
         else
         {
-            PlayerRB.velocity = Vector2.zero;
-            anim.SetBool("Moving", false);
+            anim.SetBool("Moving", true);
+
         }
 
         anim.SetFloat("DirX", currDirection.x);
         anim.SetFloat("DirY", currDirection.y);
+
 
     }
     #endregion
