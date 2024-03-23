@@ -15,9 +15,10 @@ public class Chest : MonoBehaviour
     IEnumerator DestroyChest()
     {
         /* TODO Part 6.2: Instantiate the health potion at the chest's location and destroy the chest. */
+        yield return null;
     }
 
-    public void Interact()
+    public void Open()
     {
         StartCoroutine("DestroyChest");
     }

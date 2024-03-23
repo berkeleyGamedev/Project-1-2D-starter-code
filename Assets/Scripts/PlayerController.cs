@@ -129,15 +129,9 @@ public class PlayerController : MonoBehaviour
     #region Interact_functions
     private void Interact()
     {
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(PlayerRB.position + currDirection, new Vector2(0.5f, 0.5f), 0f, Vector2.zero, 0f);
+        /* TODO 6.3: Use a BoxCastAll raycast to check what is infront of the player. 
+         * If there is a chest game object, open the chest by calling it's Open() function */
 
-        foreach (RaycastHit2D hit in hits)
-        {
-            if (hit.transform.CompareTag("Chest"))
-            {
-                hit.transform.GetComponent<Chest>().Interact();
-            }
-        }
     }
     #endregion
 }

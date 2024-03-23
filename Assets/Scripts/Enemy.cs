@@ -34,21 +34,21 @@ public class Enemy : MonoBehaviour
     }
 
     private void Update() {
-        /* TODO: Call Move() if player is !null */
+        /* TODO 2.1: Call Move() if player is !null */
     }
     #endregion
 
     #region Movement_functions
     private void Move()
     { 
-        /* TODO: Move the enemy towards the player */
+        /* TODO 2.1: Move the enemy towards the player */
     }
     #endregion
 
     #region Attack_functions
     private void Explode()
     {
-        /* TODO: Explode should deal damage to the player if within explosion radius. To simulate a explosion, 
+        /* TODO 2.2: Explode should deal damage to the player if within explosion radius. To simulate a explosion, 
             the enemy game object should be destroyed and spawn a explosion animation in its place. 
             IMPORTANT: Destroy() should be the LAST function executed. Once a game object is destroyed, it will not execute any code beyond that line. */
 
@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-       /* TODO: Call Explode() if enemy comes in contact with player */
+       /* TODO 2.3: Call Explode() if enemy comes in contact with player */
     }
     #endregion
 
