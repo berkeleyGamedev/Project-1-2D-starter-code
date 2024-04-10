@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     #region Movement_variables
-    public float movespeed;
+    public float moveSpeed;
     #endregion
 
     #region Targeting_variables
@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     #endregion
 
     #region Health_variables
-    public float MaxHealth;
+    public float maxHealth;
     float currhealth;
     #endregion
 
@@ -30,7 +30,6 @@ public class Enemy : MonoBehaviour
 
     private void Awake() {
         EnemyRB = GetComponent<Rigidbody2D>();
-        currhealth = MaxHealth;
     }
 
     private void Update() {

@@ -40,11 +40,11 @@ public class PlayerController : MonoBehaviour
 
 
     #region Attack_variables
-    public float Damage;
-    public float attackspeed = 1 ;
+    public float damage;
+    public float attackSpeed = 1;
     float attackTimer;
-    public float hitboxtiming;
-    public float endanimationtiming;
+    public float hitboxTiming;
+    public float endAnimationTiming;
     bool isAttacking;
     Vector2 currDirection;
     #endregion
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         isAttacking = true;
         PlayerRB.velocity = Vector2.zero;
         anim.SetTrigger("Attack");
-        yield return new WaitForSeconds(hitboxtiming);
+        yield return new WaitForSeconds(hitboxTiming);
         Debug.Log("Casting hitbox now");
 
         RaycastHit2D[] hits = Physics2D.BoxCastAll(PlayerRB.position + currDirection, Vector2.one, 0f, Vector2.zero);
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
                 the "hit" reference variable */
             }
         }
-        yield return new WaitForSeconds(hitboxtiming);
+        yield return new WaitForSeconds(hitboxTiming);
         isAttacking = false;
     }
     

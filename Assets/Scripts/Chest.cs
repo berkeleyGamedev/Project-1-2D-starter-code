@@ -7,8 +7,7 @@ public class Chest : MonoBehaviour
 
     #region GameObject_variables
     [SerializeField]
-    [Tooltip("health pack")]
-    private GameObject healthpack;
+    private GameObject healthPotion;
     #endregion
 
     #region Chest_functions

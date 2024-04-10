@@ -7,7 +7,7 @@ public class HealthPack : MonoBehaviour
     #region HealthPack_variables
     [SerializeField]
     [Tooltip("amount the player heals")]
-    private int healamount;
+    private int healAmount;
     #endregion
 
     #region Heal_functions
