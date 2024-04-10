@@ -25,22 +25,22 @@ public class GameManager : MonoBehaviour
     #region Scene_transitions
     public void StartGame()
     {
-        /* TODO: Change the scene when this function is called to the appropriate scene using SceneManager.LoadScene() */
+        /* TODO 7.2: Change the scene when this function is called to the appropriate scene using SceneManager.LoadScene() */
     }
 
     public void LoseGame()
     {
-        /* TODO: Change the scene when this function is called to the appropriate scene using SceneManager.LoadScene() */
+        /* TODO 7.2: Change the scene when this function is called to the appropriate scene using SceneManager.LoadScene() */
     }
 
     public void WinGame()
     {
-        /* TODO: Change the scene when this function is called to the appropriate scene using SceneManager.LoadScene() */
+        /* TODO 7.2: Change the scene when this function is called to the appropriate scene using SceneManager.LoadScene() */
     }
 
     public void MainMenu()
     {
-        /* TODO: Change the scene when this function is called to the appropriate scene using SceneManager.LoadScene() */
+        /* TODO 7.2: Change the scene when this function is called to the appropriate scene using SceneManager.LoadScene() */
     }
     #endregion
 }
