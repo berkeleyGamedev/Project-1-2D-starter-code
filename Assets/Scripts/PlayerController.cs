@@ -24,8 +24,10 @@ public class PlayerController : MonoBehaviour
     #region Unity_functions
     private void Awake() {
         /* TODO: Update your Awake function to initialize all variables needed. This includes your attackTimer, and your HPSlider.value.*/
-        /* TODO 3.1: Set HPSlider.value to a ratio between the 
+
+        /* TODO 4.1: Set HPSlider.value to a ratio between the 
             player's current health and maximum health. */
+            
         PlayerRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
