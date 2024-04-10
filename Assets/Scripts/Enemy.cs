@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
             the enemy game object should be destroyed and spawn a explosion animation in its place. 
             IMPORTANT: Destroy() should be the LAST function executed. Once a game object is destroyed, it will not execute any code beyond that line. */
 
-        /* TODO: Call TakeDamage() inside of the player's PlayerController script using
+        /* TODO 3.2: Call TakeDamage() inside of the player's PlayerController script using
             the "hit" reference variable. */
     }
 
@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
     #region Health_functions
     public void TakeDamage(float value)
     {
-       /* TODO: Adjust currHealth when the enemy takes damage
+       /* TODO 3.1: Adjust currHealth when the enemy takes damage
         IMPORTANT: What happens when the enemy's health reaches 0? */
     }
 

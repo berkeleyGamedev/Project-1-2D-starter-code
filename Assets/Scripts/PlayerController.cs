@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,7 +24,7 @@ public class PlayerController : MonoBehaviour
     #region Unity_functions
     private void Awake() {
         /* TODO: Update your Awake function to initialize all variables needed. This includes your attackTimer, and your HPSlider.value.*/
-        /* TODO: Set HPSlider.value to a ratio between the 
+        /* TODO 3.1: Set HPSlider.value to a ratio between the 
             player's current health and maximum health. */
         PlayerRB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -71,7 +70,7 @@ public class PlayerController : MonoBehaviour
             if(hit.transform.CompareTag("Enemy"))
             {
                 Debug.Log("Tons of Damage");
-                /* TODO: Call TakeDamage() inside of the enemy's Enemy script using
+                /* TODO 3.2: Call TakeDamage() inside of the enemy's Enemy script using
                 the "hit" reference variable */
             }
         }
@@ -106,18 +105,18 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float value)
     {
-        /* TODO: Adjust currHealth when the player takes damage
+        /* TODO 3.1: Adjust currHealth when the player takes damage
         IMPORTANT: What happens when the player's health reaches 0? */
 
-        /* TODO: Update the value of HPSlider after the player's health changes. */
+        /* TODO 4.1: Update the value of HPSlider after the player's health changes. */
     }
 
     public void Heal(float value)
     {
-        /* TODO: Adjust currHealth when the player heals
+        /* TODO 3.1: Adjust currHealth when the player heals
         IMPORTANT: What happens when the player's health surpasses their max health? Should currHealth be above maxHealth?*/
 
-        /* TODO: Update the value of HPSlider after the player's health changes. */
+        /* TODO 4.1: Update the value of HPSlider after the player's health changes. */
     }
 
     public void Die()
