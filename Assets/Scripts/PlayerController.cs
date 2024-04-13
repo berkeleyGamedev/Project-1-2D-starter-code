@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     #region Movement_variables
+    public float moveSpeed;
     float x_input;
     float y_input;
     #endregion
@@ -32,9 +33,13 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
     }
     private void Update() {
-        /*TODO: Write an Update function that will call the Move() helper function while also updating the x_input and y_input values.
+        /*TODO 1.1: Write an Update function that will call the Move() helper function while also updating the x_input and y_input values.
         You will also need to edit this function when you call attacks, and interacting with chests.*/
-        
+
+        /* TODO 1.2: Check if the key "J" is being pressed. If so, attack by calling your Attack() function
+         * IMPORTANT:  You will need to use `Input.GetKeyDown(KeyCode.J)` to determine if the key is being pressed
+        */
+
     }
     #endregion
 
@@ -65,8 +70,8 @@ public class PlayerController : MonoBehaviour
         anim.SetTrigger("Attack");
         yield return new WaitForSeconds(hitboxTiming);
         Debug.Log("Casting hitbox now");
-
         RaycastHit2D[] hits = Physics2D.BoxCastAll(PlayerRB.position + currDirection, Vector2.one, 0f, Vector2.zero);
+
         foreach (RaycastHit2D hit in hits)
         {
             if(hit.transform.CompareTag("Enemy"))
@@ -76,6 +81,7 @@ public class PlayerController : MonoBehaviour
                 the "hit" reference variable */
             }
         }
+
         yield return new WaitForSeconds(hitboxTiming);
         isAttacking = false;
     }
@@ -85,7 +91,7 @@ public class PlayerController : MonoBehaviour
     #region Movement_functions
     private void Move()
     {
-        /*TODO: Edit the Move() function which will set PlayerRB.velocity to a vector based on which input the player is pressing.*/
+        /*TODO 1.1: Edit the Move() function which will set PlayerRB.velocity to a vector based on which input the player is pressing.*/
         if (x_input == 0 && y_input == 0)
         {
             anim.SetBool("Moving", false);

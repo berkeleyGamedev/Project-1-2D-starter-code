@@ -425,6 +425,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114709323922030040, guid: 7435eaae065048643bcec5496115f0f9,
         type: 3}
+      propertyPath: sounds.Array.data[3].name
+      value: EnemyHurt
+      objectReference: {fileID: 0}
+    - target: {fileID: 114709323922030040, guid: 7435eaae065048643bcec5496115f0f9,
+        type: 3}
       propertyPath: sounds.Array.data[4].name
       value: PlayerAttack
       objectReference: {fileID: 0}
@@ -1556,7 +1561,7 @@ GameObject:
   - component: {fileID: 586064253}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1602,8 +1607,7 @@ SpriteRenderer:
   m_SortingLayerID: -91322625
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4848349341741214232, guid: 504308f08b44af1439720d650a307d95,
-    type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1611,7 +1615,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &586064251
@@ -1636,13 +1640,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586064247}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a6306b096862704fb277e728853aa71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
   damage: 0
-  attackSpeed: 1
+  attackSpeed: 0
   hitboxTiming: 0
   endAnimationTiming: 0
 --- !u!95 &586064253
