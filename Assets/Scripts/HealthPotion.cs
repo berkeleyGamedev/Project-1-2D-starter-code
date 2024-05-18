@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthPack : MonoBehaviour
 {
-    #region HealthPack_variables
+    #region HealthPotion_variables
     [SerializeField]
     [Tooltip("amount the player heals")]
     private int healAmount;
