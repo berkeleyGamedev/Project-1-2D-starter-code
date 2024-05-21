@@ -36,10 +36,11 @@ public class PlayerController : MonoBehaviour
         /*TODO 1.1: Write an Update function that will call the Move() helper function while also updating the x_input and y_input values.
         You will also need to edit this function when you call attacks, and interacting with chests.*/
 
-        /* TODO 1.2: Check if the key "J" is being pressed. If so, attack by calling your Attack() function
-         * IMPORTANT:  You will need to use `Input.GetKeyDown(KeyCode.J)` to determine if the key is being pressed
+        /* TODO 1.2: Check if the attack key is being pressed. If so, attack by calling your Attack() function
+         * IMPORTANT:  You will need to use `Input.GetKeyDown(KeyCode key)` to determine if the key is being pressed
         */
 
+        /* TODO 1.3: Modify your attack conditional statement to only attack when attackTimer < 0. Otherwise, decrement the attackTimer. */
     }
     #endregion
 
@@ -58,13 +59,13 @@ public class PlayerController : MonoBehaviour
     #region Attack_functions
     private void Attack()
     {
-        // TODO: Create a function that will start the attack coroutine and set the timer to attackspeed.
+        // TODO 1.3: Set the attackTimer to attackSpeed to reset the attack cooldown 
         Debug.Log("Attacking now");
     }
 
     IEnumerator AttackRoutine()
     {
-        /* TODO: You will need to edit this function in the animation section, the enemy section, and in the sound section.*/
+        /* Note: You will need to edit this function in the animation section, the enemy section, and in the sound section.*/
         isAttacking = true;
         PlayerRB.velocity = Vector2.zero;
         anim.SetTrigger("Attack");
@@ -92,6 +93,13 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         /*TODO 1.1: Edit the Move() function which will set PlayerRB.velocity to a vector based on which input the player is pressing.*/
+
+        /* TODO 1.4: Set currDirection to the correct Vector direction i.e. Vector2.left.
+         * HINT: there are four cardinal directions. */
+
+
+        /* DO NOT MODIFY ANYTHING BELOW THIS LINE UNLESS YOU REALLY KNOW WHAT YOU'RE DOING */
+
         if (x_input == 0 && y_input == 0)
         {
             anim.SetBool("Moving", false);
@@ -104,7 +112,6 @@ public class PlayerController : MonoBehaviour
 
         anim.SetFloat("DirX", currDirection.x);
         anim.SetFloat("DirY", currDirection.y);
-
 
     }
     #endregion
