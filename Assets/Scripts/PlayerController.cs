@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     #region Movement_variables
-    public float moveSpeed;
+    public float moveSpeed = 3;
     float x_input;
     float y_input;
     #endregion
@@ -15,7 +15,8 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region Health_variables
-
+    public float maxHealth = 5;
+    float currHealth = 5;
     #endregion
 
     #region Animation_components
@@ -47,11 +48,11 @@ public class PlayerController : MonoBehaviour
 
 
     #region Attack_variables
-    public float damage;
+    public float damage = 2;
     public float attackSpeed = 1;
     float attackTimer;
-    public float hitboxTiming;
-    public float endAnimationTiming;
+    public float hitboxTiming = 0.1f;
+    public float endAnimationTiming = 0.1f;
     bool isAttacking;
     Vector2 currDirection;
     #endregion
