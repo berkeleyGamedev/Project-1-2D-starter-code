@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
 
     #region Health_variables
     public float maxHealth;
-    float currhealth;
+    float currHealth;
     #endregion
 
     #region Attack_variables
